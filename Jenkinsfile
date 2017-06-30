@@ -26,7 +26,7 @@ pipeline {
   stages {
     stage ('Data Collection') {
       // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
-      parallel stepsForParallel
+      parallel stepsForParallel,
       failFast: true
     }
 
@@ -37,7 +37,7 @@ pipeline {
           unstash dbNames[i]
         }
         archive includes:'*.sql'
-        sh git add -A; git comment -m 'mysql DB updates'; git push
+        sh 'git add -A; git comment -m "mysql DB updates"; git push'
       }
     }
 
