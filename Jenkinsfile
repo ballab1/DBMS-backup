@@ -11,7 +11,7 @@ for (int i=0; i<dbNames.size(); ++i) {
 def transformIntoStep(dbName) {
   return {
     steps {
-      def opfile = "${dbName}.sql"
+      def opfile = $dbName.sql
       sh sudo docker exec -i mysql mysqldump --user bobb --password="${PWRD}"  "${dbName}" > "${dbName}.sql"
       archive opfile
       stash includes: opfile, name: dbName
