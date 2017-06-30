@@ -24,12 +24,13 @@ pipeline {
   agent { label 'ubuntu-s3' }
   options { timestamps() }
   stages {
-    stage 'Data Collection'
+    stage ('Data Collection') {
       // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
       parallel stepsForParallel
       failFast: true
+    }
 
-    stage 'Update GIThub'
+    stage ('Update GIThub') {
       steps {
         checkout scm
         for (int i=0; i<dbNames.size(); ++i) {
@@ -38,6 +39,8 @@ pipeline {
         archive includes:'*.sql'
         sh git add -A; git comment -m 'mysql DB updates'; git push
       }
+    }
+
     post {
       always {
         echo 'One way or another, I have finished'
