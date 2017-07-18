@@ -29,8 +29,10 @@ pipeline {
   agent { label 'ubuntu-s3' }
   options { timestamps() }
   stages {
-    // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
-    parallel (stepsForParallel)
+    stage ('Data Collection') {
+      // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
+      parallel (stepsForParallel)
+    }
 
     stage ('Update GIThub') {
       steps {
