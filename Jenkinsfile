@@ -6,6 +6,7 @@ for (int i=0; i<dbNames.size(); ++i) {
    def name = dbNames[i]
    stepsForParallel[name] = transformIntoStep(name)['name']
 }
+stepsForParallel[failFast] = true
 
 
 // return a closure because we do not want 'node(..){...}' execcuted when this function is called
@@ -28,8 +29,7 @@ pipeline {
     stage ('Data Collection') {
       steps {
         // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
-        parallel (stepsForParallel),
-        failFast: true
+        parallel (stepsForParallel)
       }
     }
 
