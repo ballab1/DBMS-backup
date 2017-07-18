@@ -35,9 +35,9 @@ pipeline {
     stage ('Update GIThub') {
       steps {
         checkout scm
-        for (int i=0; i<dbNames.size(); ++i) {
-          unstash dbNames[i]
-        }
+        unstash dbNames[0]
+        unstash dbNames[1]
+        unstash dbNames[2]
         archive includes:'*.sql'
         sh 'git add -A; git comment -m "mysql DB updates"; git push'
       }
