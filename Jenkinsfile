@@ -4,13 +4,14 @@ def stepsForParallel = [:]
 def dbNames = ['nconf', 'phpmyadmin', 'zen']
 for (int i=0; i<dbNames.size(); ++i) {
    def name = dbNames[i]
-   stepsForParallel[name] = transformIntoStep(name)
+   stepsForParallel[name] = transformIntoStep(name)[name]
 }
+
 
 // return a closure because we do not want 'node(..){...}' execcuted when this function is called
 def transformIntoStep(dbName) {
   return {
-    lbl: {
+    (dbName): {
       def opfile = "${dbName}.sql"
       sh "sudo docker exec -i mysql mysqldump --user bobb --password=${PWRD}  ${dbName} > ${dbName}.sql"
       archive opfile
@@ -27,7 +28,7 @@ pipeline {
     stage ('Data Collection') {
       steps {
         // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
-        parallel stepsForParallel,
+        parallel (stepsForParallel),
         failFast: true
       }
     }
