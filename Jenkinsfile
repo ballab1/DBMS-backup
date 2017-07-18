@@ -42,25 +42,24 @@ pipeline {
         sh 'git add -A; git comment -m "mysql DB updates"; git push'
       }
     }
-/*
-    post {
-      always {
-        echo 'One way or another, I have finished'
-        deleteDir() /* clean up our workspace */
-      }
-      success {
-        echo 'I succeeeded!'
-      }
-      unstable {
-        echo 'I am unstable :/'
-      }
-      failure {
-        echo 'I failed :('
-      }
-      changed {
-        echo 'Things were different before...'
-      }
-    }
-*/
+
+//    post {
+//      always {
+//        echo 'One way or another, I have finished'
+//        deleteDir() /* clean up our workspace */
+//      }
+//      success {
+//        echo 'I succeeeded!'
+//      }
+//      unstable {
+//        echo 'I am unstable :/'
+//      }
+//      failure {
+//        echo 'I failed :('
+//      }
+//      changed {
+//        echo 'Things were different before...'
+//      }
+//    }
   }
 }
