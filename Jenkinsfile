@@ -10,9 +10,9 @@ for (int i=0; i<dbNames.size(); ++i) {
 // return a closure because we do not want 'node(..){...}' execcuted when this function is called
 def transformIntoStep(dbName) {
   return {
-    steps {
-      def opfile = $dbName.sql
-      sh 'sudo docker exec -i mysql mysqldump --user bobb --password=${PWRD}  ${dbName} > ${dbName}.sql'
+    node('ubuntu-s3') {
+      def opfile = "${dbName}.sql"
+      sh "sudo docker exec -i mysql mysqldump --user bobb --password=${PWRD}  ${dbName} > ${dbName}.sql"
       archive opfile
       stash includes: opfile, name: dbName
     }
@@ -25,9 +25,11 @@ pipeline {
   options { timestamps() }
   stages {
     stage ('Data Collection') {
-      // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
-      parallel stepsForParallel,
-      failFast: true
+      steps {
+        // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
+        parallel stepsForParallel,
+        failFast: true
+      }
     }
 
     stage ('Update GIThub') {
