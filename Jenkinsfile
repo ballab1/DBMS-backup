@@ -42,7 +42,7 @@ pipeline {
         sh 'git add -A; git comment -m "mysql DB updates"; git push'
       }
     }
-
+/*
     post {
       always {
         echo 'One way or another, I have finished'
@@ -61,5 +61,6 @@ pipeline {
         echo 'Things were different before...'
       }
     }
+*/
   }
 }
