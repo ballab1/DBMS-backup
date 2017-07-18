@@ -6,7 +6,7 @@ for (int i=0; i<dbNames.size(); ++i) {
    def dbName = dbNames[i]
    def opfile = "${dbName}.sql"
    stepsForParallel[dbName] =  {
-          stage("${dbName}) {
+          stage("${dbName}") {
             steps {
               sh "sudo docker exec -i mysql mysqldump --user bobb --password=${PWRD}  ${dbName} > ${dbName}.sql"
               archive opfile
