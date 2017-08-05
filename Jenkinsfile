@@ -1,60 +1,48 @@
-
-def stepsForParallel = [:]
-
-def dbNames = ['nconf', 'phpmyadmin', 'zen']
-for (int i=0; i<dbNames.size(); ++i) {
-   def name = dbNames[i]
-   stepsForParallel[name] = transformIntoStep(name)
-}
-
-// return a closure because we do not want 'node(..){...}' execcuted when this function is called
-def transformIntoStep(dbName) {
-  return {
-    steps {
-      def opfile = "${dbName}.sql"
-      sh sudo docker exec -i mysql mysqldump --user bobb --password="${PWRD}"  "${dbName}" > "${dbName}.sql"
-      archive opfile
-      stash includes: opfile, name: dbName
+timestamps {
+    node('ubuntu-s3') {
+        cleanWs()
+	stage ('nconf') {
+	    withCredentials([usernamePassword(credentialsId: '1a69cdbb-be20-4bde-b30a-87ef9b2db969',
+					      passwordVariable: 'PWRD',
+					      usernameVariable: 'USER')
+			    ]) {
+		sh "sudo docker exec -i mysql mysqldump --user ${USER} --password=${PWRD} nconf > nconf.sql"
+		stash includes: 'nconf.sql', name: 'nconf'
+	     }
+	}
+	stage ('phpmyadmin') {
+	    withCredentials([usernamePassword(credentialsId: '1a69cdbb-be20-4bde-b30a-87ef9b2db969',
+					      passwordVariable: 'PWRD',
+					      usernameVariable: 'USER')
+			    ]) {
+		sh "sudo docker exec -i mysql mysqldump --user ${USER} --password=${PWRD} phpmyadmin > phpmyadmin.sql"
+		stash includes: 'phpmyadmin.sql', name: 'phpmyadmin'
+	     }
+	}
+	stage ('zen') {
+	    withCredentials([usernamePassword(credentialsId: '1a69cdbb-be20-4bde-b30a-87ef9b2db969',
+					      passwordVariable: 'PWRD',
+					      usernameVariable: 'USER')
+			    ]) {
+		sh "sudo docker exec -i mysql mysqldump --user ${USER} --password=${PWRD} zen > zen.sql"
+		stash includes: 'zen.sql', name: 'zen'
+	     }
+	}
+	stage ('Update GIThub') {
+            withCredentials([usernamePassword(credentialsId: '935a7b57-da74-45f7-9119-5a0529afb8ae',
+					      passwordVariable: 'GIT_PASSWORD',
+					      usernameVariable: 'GIT_USERNAME')
+			    ]) {
+                sh 'rm -rf *'
+		sh 'git clone -v -b master https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ballab1/DBMS-backup.git .'
+		unstash 'nconf'
+		unstash 'phpmyadmin'
+		unstash 'zen'
+		archive includes:'*.sql'
+		sh 'git add -A'
+		sh 'git commit -m "mysql DB updates"'
+		sh 'git push -v'
+	     }
+	}
     }
-  }
-}
-
-
-pipeline {
-  agent { label 'ubuntu-s3' }
-  options { timestamps() }
-  stages {
-    stage 'Data Collection'
-      // Actually run the steps in parallel - parallel takes a map as an argument, hence the above.
-      parallel stepsForParallel
-      failFast: true
-
-    stage 'Update GIThub'
-      steps {
-        checkout scm
-        for (int i=0; i<dbNames.size(); ++i) {
-          unstash dbNames[i]
-        }
-        archive includes:'*.sql'
-        sh git add -A; git comment -m 'mysql DB updates'; git push
-      }
-    post {
-      always {
-        echo 'One way or another, I have finished'
-        deleteDir() /* clean up our workspace */
-      }
-      success {
-        echo 'I succeeeded!'
-      }
-      unstable {
-        echo 'I am unstable :/'
-      }
-      failure {
-        echo 'I failed :('
-      }
-      changed {
-        echo 'Things were different before...'
-      }
-    }
-  }
 }
