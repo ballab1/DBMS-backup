@@ -47,8 +47,8 @@ timestamps {
                 archive includes:'*.sql'
 
                 // check the 'git status' to see if there are any changes  (return SUCCESS on 0-changes)
-                def porcelainStatus = sh (returnStdout: true, script: 'git status --porcelain').split("\\r?\\n")
-                int numberOfChanges = porcelainStatus.findAll{ it =~ /[^\\s]+/ }.size()
+                def porcelainStatus = sh (returnStdout: true, script: 'git status --porcelain')?.split("\\r?\\n")
+                int numberOfChanges = porcelainStatus?.findAll{ it =~ /[^\\s]+/ }.size()
                 if (numberOfChanges > 0) {
                     // update our git repo with changes
                     sh 'git add -A'
