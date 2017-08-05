@@ -34,7 +34,7 @@ timestamps {
 					      usernameVariable: 'GIT_USERNAME')
 			    ]) {
                 sh 'rm -rf *'
-		sh 'git clone -v -b dev2 https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ballab1/DBMS-backup.git .'
+		sh 'git clone -v -b master https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ballab1/DBMS-backup.git .'
 		unstash 'nconf'
 		unstash 'phpmyadmin'
 		unstash 'zen'
