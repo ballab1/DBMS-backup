@@ -251,7 +251,7 @@ CREATE TABLE `pma__recent` (
 
 LOCK TABLES `pma__recent` WRITE;
 /*!40000 ALTER TABLE `pma__recent` DISABLE KEYS */;
-INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"nconf\",\"table\":\"ItemLinks\"},{\"db\":\"nconf\",\"table\":\"History\"},{\"db\":\"nconf\",\"table\":\"ConfigValues\"},{\"db\":\"nconf\",\"table\":\"ConfigItems\"},{\"db\":\"nconf\",\"table\":\"ConfigClasses\"},{\"db\":\"nconf\",\"table\":\"ConfigAttrs\"}]');
+INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"nconf\",\"table\":\"ConfigAttrs\"}]');
 /*!40000 ALTER TABLE `pma__recent` ENABLE KEYS */;
 UNLOCK TABLES;
 
