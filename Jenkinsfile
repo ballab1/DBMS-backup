@@ -51,6 +51,7 @@ timestamps {
                 int numberOfChanges = porcelainStatus?.findAll{ it =~ /[^\\s]+/ }.size()
                 if (numberOfChanges > 0) {
                     // update our git repo with changes
+                    sh 'git status'
                     sh 'git add -A'
                     sh 'git commit -m "mysql DB updates"'
                     sh 'git push -v'
