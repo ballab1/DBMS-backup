@@ -251,7 +251,7 @@ CREATE TABLE `pma__recent` (
 
 LOCK TABLES `pma__recent` WRITE;
 /*!40000 ALTER TABLE `pma__recent` DISABLE KEYS */;
-INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"grafana\",\"table\":\"org_user\"},{\"db\":\"grafana\",\"table\":\"org\"},{\"db\":\"grafana\",\"table\":\"user\"}]');
+INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"grafana\",\"table\":\"org_user\"},{\"db\":\"grafana\",\"table\":\"user\"},{\"db\":\"grafana\",\"table\":\"temp_user\"},{\"db\":\"grafana\",\"table\":\"org\"}]');
 /*!40000 ALTER TABLE `pma__recent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -486,6 +486,7 @@ CREATE TABLE `pma__users` (
 
 LOCK TABLES `pma__users` WRITE;
 /*!40000 ALTER TABLE `pma__users` DISABLE KEYS */;
+INSERT INTO `pma__users` VALUES ('grafana','');
 /*!40000 ALTER TABLE `pma__users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
