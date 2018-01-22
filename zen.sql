@@ -85,7 +85,7 @@ CREATE TABLE `zen_administrators` (
 
 LOCK TABLES `zen_administrators` WRITE;
 /*!40000 ALTER TABLE `zen_administrators` DISABLE KEYS */;
-INSERT INTO `zen_administrators` VALUES (1,'administrators',NULL,NULL,NULL,'group',NULL,1962864621,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Users with full privileges',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'viewers',NULL,NULL,NULL,'group',NULL,9985,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Users allowed only to view zenphoto objects',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'blocked',NULL,NULL,NULL,'group',NULL,0,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Banned users',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'album managers',NULL,NULL,NULL,'template',NULL,68216581,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Managers of one or more albums',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'default',NULL,NULL,NULL,'template',NULL,1889,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Default user settings',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'newuser',NULL,NULL,NULL,'template',NULL,1,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Newly registered and verified users',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'bobb','ofCBlJeGoNCZibYvxRBkpMKj-JD3Qxi3RFPD35CH2lU=',3,'2013-12-23 19:49:10','Bob Ballantyne','ballantyne.robert@gmail.com',1996419053,NULL,1,NULL,'2013-12-23 19:49:10','2018-01-07 12:55:10','2018-01-04 20:34:48',NULL,NULL,NULL,NULL,'a:2:{s:9:\"challenge\";s:21:\"Who is my best friend\";s:8:\"response\";s:4:\"Joan\";}',NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `zen_administrators` VALUES (1,'administrators',NULL,NULL,NULL,'group',NULL,1962864621,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Users with full privileges',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'viewers',NULL,NULL,NULL,'group',NULL,9985,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Users allowed only to view zenphoto objects',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'blocked',NULL,NULL,NULL,'group',NULL,0,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Banned users',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'album managers',NULL,NULL,NULL,'template',NULL,68216581,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Managers of one or more albums',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'default',NULL,NULL,NULL,'template',NULL,1889,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Default user settings',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'newuser',NULL,NULL,NULL,'template',NULL,1,NULL,0,NULL,'2013-12-23 19:48:10',NULL,NULL,NULL,NULL,NULL,'Newly registered and verified users',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'bobb','ofCBlJeGoNCZibYvxRBkpMKj-JD3Qxi3RFPD35CH2lU=',3,'2013-12-23 19:49:10','Bob Ballantyne','ballantyne.robert@gmail.com',1996419053,NULL,1,NULL,'2013-12-23 19:49:10','2018-01-21 22:26:27','2018-01-07 12:55:10',NULL,NULL,NULL,NULL,'a:2:{s:9:\"challenge\";s:21:\"Who is my best friend\";s:8:\"response\";s:4:\"Joan\";}',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `zen_administrators` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -530,7 +530,7 @@ CREATE TABLE `zen_options` (
   `creator` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_option` (`name`,`ownerid`,`theme`)
-) ENGINE=InnoDB AUTO_INCREMENT=22540 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22542 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
