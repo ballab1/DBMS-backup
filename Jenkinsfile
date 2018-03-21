@@ -7,8 +7,8 @@ timestamps {
                               usernameVariable: 'USER')
                 ]) {
                 // dump database, and make sure there is no time info in file
-                sh "sudo docker exec -i mysql mysqldump --user ${USER} --password=${PWRD} grafana | grep -v '^-- Dump completed on' > nconf.sql"
-                stash includes: 'nconf.sql', name: 'nconf'
+                sh "sudo docker exec -i mysql mysqldump --user ${USER} --password=${PWRD} grafana | grep -v '^-- Dump completed on' > grafana.sql"
+                stash includes: 'grafana.sql', name: 'grafana'
             }
         }
         stage ('nconf') {
