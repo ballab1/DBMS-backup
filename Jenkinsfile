@@ -62,6 +62,7 @@ timestamps {
 
                 // get our DB bakup files
                 unstash 'grafana'
+                unstash 'kafka_data'
                 unstash 'nconf'
                 unstash 'phpmyadmin'
                 unstash 'zen'
