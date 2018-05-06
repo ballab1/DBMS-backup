@@ -11,6 +11,16 @@ timestamps {
                 stash includes: 'grafana.sql', name: 'grafana'
             }
         }
+        stage ('kafka_data') {
+            withCredentials([usernamePassword(credentialsId: '1a69cdbb-be20-4bde-b30a-87ef9b2db969',
+                              passwordVariable: 'PWRD',
+                              usernameVariable: 'USER')
+                ]) {
+                // dump database, and make sure there is no time info in file
+                sh "sudo docker exec -i mysql mysqldump --user ${USER} --password=${PWRD} kafka_data | grep -v '^-- Dump completed on' > kafka_data.sql"
+                stash includes: 'kafka_data.sql', name: 'kafka_data'
+            }
+        }
         stage ('nconf') {
             withCredentials([usernamePassword(credentialsId: '1a69cdbb-be20-4bde-b30a-87ef9b2db969',
                               passwordVariable: 'PWRD',
