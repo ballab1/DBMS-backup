@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.11, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
 --
 -- Host: localhost    Database: zen
 -- ------------------------------------------------------
--- Server version	8.0.11
+-- Server version	5.7.23
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8mb4 ;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,12 +21,12 @@
 
 DROP TABLE IF EXISTS `zen_admin_to_object`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_admin_to_object` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `adminid` int(11) unsigned NOT NULL,
   `objectid` int(11) unsigned NOT NULL,
-  `type` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'album',
+  `type` varchar(32) CHARACTER SET utf8 DEFAULT 'album',
   `edit` int(11) DEFAULT '32767',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -47,33 +47,33 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_administrators`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_administrators` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `pass` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `pass` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `passhash` int(1) DEFAULT NULL,
   `passupdate` datetime DEFAULT NULL,
-  `name` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `email` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `name` text COLLATE utf8_unicode_ci,
+  `email` text CHARACTER SET utf8,
   `rights` int(11) DEFAULT NULL,
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `custom_data` text CHARACTER SET utf8,
   `valid` int(1) NOT NULL DEFAULT '1',
-  `group` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `group` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `loggedin` datetime DEFAULT NULL,
   `lastloggedin` datetime DEFAULT NULL,
   `quota` int(11) DEFAULT NULL,
-  `language` varchar(5) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `prime_album` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `other_credentials` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `challenge_phrase` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `street` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `website` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `city` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `country` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `state` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `postal` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `language` varchar(5) CHARACTER SET utf8 DEFAULT NULL,
+  `prime_album` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `other_credentials` text CHARACTER SET utf8,
+  `challenge_phrase` text CHARACTER SET utf8,
+  `street` tinytext CHARACTER SET utf8,
+  `website` tinytext CHARACTER SET utf8,
+  `city` tinytext CHARACTER SET utf8,
+  `country` tinytext CHARACTER SET utf8,
+  `state` tinytext CHARACTER SET utf8,
+  `postal` tinytext CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   UNIQUE KEY `valid` (`valid`,`user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -95,45 +95,45 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_albums`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_albums` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentid` int(11) unsigned DEFAULT NULL,
-  `folder` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `folder` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `title` text COLLATE utf8_unicode_ci,
+  `desc` text CHARACTER SET utf8,
   `date` datetime DEFAULT NULL,
   `updateddate` datetime DEFAULT NULL,
-  `location` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `location` text CHARACTER SET utf8,
   `show` int(1) unsigned NOT NULL DEFAULT '1',
   `closecomments` int(1) unsigned NOT NULL DEFAULT '0',
   `commentson` int(1) unsigned NOT NULL DEFAULT '1',
-  `thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `thumb` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `mtime` int(32) DEFAULT NULL,
-  `sort_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `subalbum_sort_type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `sort_type` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `subalbum_sort_type` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `sort_order` int(11) unsigned DEFAULT NULL,
   `image_sortdirection` int(1) unsigned DEFAULT '0',
   `album_sortdirection` int(1) unsigned DEFAULT '0',
   `hitcounter` int(11) unsigned DEFAULT '0',
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `password_hint` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password_hint` text CHARACTER SET utf8,
   `publishdate` datetime DEFAULT NULL,
   `expiredate` datetime DEFAULT NULL,
   `total_value` int(11) DEFAULT '0',
   `total_votes` int(11) DEFAULT '0',
-  `used_ips` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `used_ips` longtext CHARACTER SET utf8,
+  `custom_data` text CHARACTER SET utf8,
   `dynamic` int(1) DEFAULT '0',
-  `search_params` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `album_theme` varchar(127) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `search_params` text CHARACTER SET utf8,
+  `album_theme` varchar(127) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `user` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
   `rating` float DEFAULT NULL,
   `rating_status` int(1) DEFAULT '3',
-  `watermark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `watermark_thumb` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `owner` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `codeblock` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `watermark` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `watermark_thumb` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `owner` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codeblock` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   UNIQUE KEY `folder` (`folder`)
 ) ENGINE=InnoDB AUTO_INCREMENT=861 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -155,11 +155,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_captcha`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_captcha` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ptime` int(32) unsigned NOT NULL,
-  `hash` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `hash` varchar(255) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -180,21 +180,21 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_comments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_comments` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ownerid` int(11) unsigned NOT NULL DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `website` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `email` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `website` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `date` datetime DEFAULT NULL,
-  `comment` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `comment` text COLLATE utf8_unicode_ci,
   `inmoderation` int(1) unsigned NOT NULL DEFAULT '0',
-  `type` varchar(52) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT 'images',
-  `IP` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `type` varchar(52) CHARACTER SET utf8 DEFAULT 'images',
+  `IP` text CHARACTER SET utf8,
   `private` int(1) DEFAULT '0',
   `anon` int(1) DEFAULT '0',
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `custom_data` text CHARACTER SET utf8,
   PRIMARY KEY (`id`),
   KEY `ownerid` (`ownerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -215,19 +215,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_images` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `albumid` int(11) unsigned DEFAULT NULL,
-  `filename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `location` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `city` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `state` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `country` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `credit` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `copyright` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `filename` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `title` text COLLATE utf8_unicode_ci,
+  `desc` text CHARACTER SET utf8,
+  `location` text COLLATE utf8_unicode_ci,
+  `city` tinytext CHARACTER SET utf8,
+  `state` tinytext CHARACTER SET utf8,
+  `country` tinytext CHARACTER SET utf8,
+  `credit` text COLLATE utf8_unicode_ci,
+  `copyright` text COLLATE utf8_unicode_ci,
   `commentson` int(1) unsigned NOT NULL DEFAULT '1',
   `show` int(1) NOT NULL DEFAULT '1',
   `date` datetime DEFAULT NULL,
@@ -244,95 +244,95 @@ CREATE TABLE `zen_images` (
   `hitcounter` int(11) unsigned DEFAULT '0',
   `total_value` int(11) unsigned DEFAULT '0',
   `total_votes` int(11) unsigned DEFAULT '0',
-  `used_ips` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `used_ips` longtext CHARACTER SET utf8,
+  `custom_data` text CHARACTER SET utf8,
   `rating` float DEFAULT NULL,
   `rating_status` int(1) DEFAULT '3',
   `hasMetadata` int(1) DEFAULT '0',
-  `watermark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `watermark` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `watermark_use` int(1) DEFAULT '7',
-  `owner` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `owner` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
   `filesize` int(11) DEFAULT NULL,
-  `codeblock` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `user` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `password_hint` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `EXIFMake` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFModel` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFDescription` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCObjectName` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `IPTCImageHeadline` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `IPTCImageCaption` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `IPTCImageCaptionWriter` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFDateTime` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFDateTimeOriginal` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFDateTimeDigitized` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCDateCreated` varchar(8) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCTimeCreated` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCDigitizeDate` varchar(8) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCDigitizeTime` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFArtist` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCImageCredit` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCByLine` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCByLineTitle` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCSource` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCContact` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFCopyright` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCCopyright` varchar(128) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFExposureTime` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFFNumber` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFISOSpeedRatings` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFExposureBiasValue` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFMeteringMode` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFFlash` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFImageWidth` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFImageHeight` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFOrientation` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFSoftware` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `EXIFContrast` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFSharpness` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFSaturation` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFWhiteBalance` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFSubjectDistance` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFFocalLength` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFLensType` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFLensInfo` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFFocalLengthIn35mmFilm` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCCity` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCSubLocation` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCState` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCLocationCode` varchar(3) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCLocationName` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCContentLocationCode` varchar(3) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCContentLocationName` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFGPSLatitude` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFGPSLatitudeRef` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFGPSLongitude` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFGPSLongitudeRef` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFGPSAltitude` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `EXIFGPSAltitudeRef` varchar(52) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCOriginatingProgram` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `IPTCProgramVersion` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoFormat` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoSize` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoArtist` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `VideoTitle` mediumtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `VideoBitrate` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoBitrate_mode` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoBits_per_sample` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoCodec` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoCompression_ratio` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoDataformat` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoEncoder` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoSamplerate` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoChannelmode` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoChannels` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoFramerate` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoResolution_x` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoResolution_y` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoAspect_ratio` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `VideoPlaytime` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `XMPrating` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `codeblock` text CHARACTER SET utf8,
+  `user` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `password_hint` text CHARACTER SET utf8,
+  `EXIFMake` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFModel` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFDescription` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCObjectName` mediumtext COLLATE utf8_unicode_ci,
+  `IPTCImageHeadline` mediumtext COLLATE utf8_unicode_ci,
+  `IPTCImageCaption` mediumtext COLLATE utf8_unicode_ci,
+  `IPTCImageCaptionWriter` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFDateTime` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFDateTimeOriginal` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFDateTimeDigitized` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCDateCreated` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCTimeCreated` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCDigitizeDate` varchar(8) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCDigitizeTime` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFArtist` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCImageCredit` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCByLine` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCByLineTitle` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCSource` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCContact` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFCopyright` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCCopyright` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFExposureTime` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFFNumber` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFISOSpeedRatings` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFExposureBiasValue` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFMeteringMode` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFFlash` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFImageWidth` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFImageHeight` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFOrientation` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFSoftware` mediumtext COLLATE utf8_unicode_ci,
+  `EXIFContrast` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFSharpness` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFSaturation` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFWhiteBalance` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFSubjectDistance` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFFocalLength` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFLensType` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFLensInfo` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFFocalLengthIn35mmFilm` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCCity` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCSubLocation` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCState` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCLocationCode` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCLocationName` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCContentLocationCode` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCContentLocationName` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFGPSLatitude` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFGPSLatitudeRef` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFGPSLongitude` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFGPSLongitudeRef` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFGPSAltitude` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `EXIFGPSAltitudeRef` varchar(52) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCOriginatingProgram` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IPTCProgramVersion` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoFormat` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoSize` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoArtist` mediumtext COLLATE utf8_unicode_ci,
+  `VideoTitle` mediumtext COLLATE utf8_unicode_ci,
+  `VideoBitrate` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoBitrate_mode` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoBits_per_sample` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoCodec` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoCompression_ratio` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoDataformat` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoEncoder` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoSamplerate` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoChannelmode` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoChannels` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoFramerate` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoResolution_x` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoResolution_y` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoAspect_ratio` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `VideoPlaytime` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `XMPrating` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `filename` (`filename`,`albumid`),
   KEY `albumid` (`albumid`)
@@ -355,19 +355,19 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_menu` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentid` int(11) unsigned DEFAULT NULL,
-  `title` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `title` text CHARACTER SET utf8,
+  `link` varchar(255) CHARACTER SET utf8 NOT NULL,
   `include_li` int(1) unsigned DEFAULT '1',
-  `type` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `sort_order` varchar(48) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
+  `type` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `sort_order` varchar(48) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `show` int(1) unsigned NOT NULL DEFAULT '1',
-  `menuset` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `span_class` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `span_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `menuset` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `span_class` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
+  `span_id` varchar(32) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -388,31 +388,31 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_news`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_news` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `content` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `extracontent` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `title` text COLLATE utf8_unicode_ci,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `extracontent` text CHARACTER SET utf8,
   `show` int(1) unsigned NOT NULL DEFAULT '1',
   `date` datetime DEFAULT NULL,
-  `titlelink` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `titlelink` varchar(255) CHARACTER SET utf8 NOT NULL,
   `commentson` int(1) unsigned DEFAULT '0',
-  `codeblock` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `author` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `codeblock` text CHARACTER SET utf8,
+  `author` varchar(64) CHARACTER SET utf8 NOT NULL,
   `lastchange` datetime DEFAULT NULL,
-  `lastchangeauthor` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `lastchangeauthor` varchar(64) CHARACTER SET utf8 NOT NULL,
   `hitcounter` int(11) unsigned DEFAULT '0',
   `permalink` int(1) unsigned NOT NULL DEFAULT '0',
   `locked` int(1) unsigned NOT NULL DEFAULT '0',
   `expiredate` datetime DEFAULT NULL,
   `total_value` int(11) unsigned DEFAULT '0',
   `total_votes` int(11) unsigned DEFAULT '0',
-  `used_ips` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `used_ips` longtext CHARACTER SET utf8,
   `rating` float DEFAULT NULL,
   `rating_status` int(1) DEFAULT '3',
   `sticky` int(1) DEFAULT '0',
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `custom_data` text CHARACTER SET utf8,
   `truncation` int(1) unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `titlelink` (`titlelink`)
@@ -434,7 +434,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_news2cat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_news2cat` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `cat_id` int(11) unsigned NOT NULL,
@@ -458,20 +458,20 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_news_categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_news_categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `titlelink` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `title` text COLLATE utf8_unicode_ci,
+  `titlelink` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `permalink` int(1) unsigned NOT NULL DEFAULT '0',
   `hitcounter` int(11) unsigned DEFAULT '0',
-  `user` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `password_hint` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `user` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `password_hint` text CHARACTER SET utf8,
   `parentid` int(11) DEFAULT NULL,
-  `sort_order` varchar(48) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `desc` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `sort_order` varchar(48) CHARACTER SET utf8 DEFAULT NULL,
+  `desc` text CHARACTER SET utf8,
+  `custom_data` text CHARACTER SET utf8,
   `show` int(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `titlelink` (`titlelink`)
@@ -493,11 +493,11 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_obj_to_tag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_obj_to_tag` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tagid` int(11) unsigned NOT NULL,
-  `type` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `type` tinytext CHARACTER SET utf8,
   `objectid` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tagid` (`tagid`),
@@ -520,17 +520,17 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_options`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_options` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `ownerid` int(11) unsigned NOT NULL DEFAULT '0',
-  `name` varchar(191) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `value` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `theme` varchar(127) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `creator` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `theme` varchar(127) COLLATE utf8_unicode_ci NOT NULL,
+  `creator` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_option` (`name`,`ownerid`,`theme`)
-) ENGINE=InnoDB AUTO_INCREMENT=28074 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27396 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -549,35 +549,35 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_pages`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_pages` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parentid` int(11) unsigned DEFAULT NULL,
-  `title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `content` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `extracontent` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `sort_order` varchar(48) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` text COLLATE utf8_unicode_ci,
+  `content` longtext COLLATE utf8_unicode_ci,
+  `extracontent` text CHARACTER SET utf8,
+  `sort_order` varchar(48) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `show` int(1) unsigned NOT NULL DEFAULT '1',
-  `titlelink` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `titlelink` varchar(255) CHARACTER SET utf8 NOT NULL,
   `commentson` int(1) unsigned DEFAULT '0',
-  `codeblock` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `author` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `codeblock` text CHARACTER SET utf8,
+  `author` varchar(64) CHARACTER SET utf8 NOT NULL,
   `date` datetime DEFAULT NULL,
   `lastchange` datetime DEFAULT NULL,
-  `lastchangeauthor` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `lastchangeauthor` varchar(64) CHARACTER SET utf8 NOT NULL,
   `hitcounter` int(11) unsigned DEFAULT '0',
   `permalink` int(1) unsigned NOT NULL DEFAULT '0',
   `locked` int(1) unsigned NOT NULL DEFAULT '0',
   `expiredate` datetime DEFAULT NULL,
   `total_value` int(11) unsigned DEFAULT '0',
   `total_votes` int(11) unsigned DEFAULT '0',
-  `used_ips` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `used_ips` longtext CHARACTER SET utf8,
   `rating` float DEFAULT NULL,
   `rating_status` int(1) DEFAULT '3',
-  `user` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `password_hint` text CHARACTER SET utf8 COLLATE utf8_general_ci,
-  `custom_data` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `user` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `password_hint` text CHARACTER SET utf8,
+  `custom_data` text CHARACTER SET utf8,
   `truncation` int(1) unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `titlelink` (`titlelink`)
@@ -599,12 +599,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_plugin_storage`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_plugin_storage` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `aux` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `data` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `type` varchar(32) CHARACTER SET utf8 NOT NULL,
+  `aux` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `data` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `type` (`type`),
   KEY `aux` (`aux`)
@@ -627,12 +627,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_search_cache`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_search_cache` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `criteria` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `criteria` text CHARACTER SET utf8,
   `date` datetime DEFAULT NULL,
-  `data` longtext CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `data` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   KEY `criteria` (`criteria`(255))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -653,10 +653,10 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `zen_tags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zen_tags` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=742 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
