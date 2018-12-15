@@ -438,7 +438,7 @@ CREATE TABLE `pma__userconfig` (
 
 LOCK TABLES `pma__userconfig` WRITE;
 /*!40000 ALTER TABLE `pma__userconfig` DISABLE KEYS */;
-INSERT INTO `pma__userconfig` VALUES ('bobb','2018-12-13 11:48:28','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
+INSERT INTO `pma__userconfig` VALUES ('bobb','2018-12-14 21:03:30','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
 /*!40000 ALTER TABLE `pma__userconfig` ENABLE KEYS */;
 UNLOCK TABLES;
 
