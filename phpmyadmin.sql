@@ -251,7 +251,7 @@ CREATE TABLE `pma__recent` (
 
 LOCK TABLES `pma__recent` WRITE;
 /*!40000 ALTER TABLE `pma__recent` DISABLE KEYS */;
-INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"grafana\",\"table\":\"org_user\"},{\"db\":\"grafana\",\"table\":\"user\"},{\"db\":\"grafana\",\"table\":\"temp_user\"},{\"db\":\"grafana\",\"table\":\"org\"}]');
+INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"nconf\",\"table\":\"History\"},{\"db\":\"grafana\",\"table\":\"annotation_tag\"},{\"db\":\"grafana\",\"table\":\"org\"},{\"db\":\"grafana\",\"table\":\"org_user\"},{\"db\":\"grafana\",\"table\":\"user\"},{\"db\":\"grafana\",\"table\":\"temp_user\"}]');
 /*!40000 ALTER TABLE `pma__recent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,7 +438,7 @@ CREATE TABLE `pma__userconfig` (
 
 LOCK TABLES `pma__userconfig` WRITE;
 /*!40000 ALTER TABLE `pma__userconfig` DISABLE KEYS */;
-INSERT INTO `pma__userconfig` VALUES ('bobb','2019-03-09 14:09:47','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
+INSERT INTO `pma__userconfig` VALUES ('bobb','2019-03-10 12:47:28','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
 /*!40000 ALTER TABLE `pma__userconfig` ENABLE KEYS */;
 UNLOCK TABLES;
 
