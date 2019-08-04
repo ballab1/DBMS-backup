@@ -531,7 +531,7 @@ CREATE TABLE `zen_options` (
   `creator` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_option` (`name`,`ownerid`,`theme`)
-) ENGINE=InnoDB AUTO_INCREMENT=27403 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27401 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
