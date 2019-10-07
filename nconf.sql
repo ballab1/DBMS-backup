@@ -104,7 +104,7 @@ CREATE TABLE `ConfigItems` (
   PRIMARY KEY (`id_item`),
   KEY `fk_id_class` (`fk_id_class`),
   CONSTRAINT `ConfigItems_ibfk_1` FOREIGN KEY (`fk_id_class`) REFERENCES `ConfigClasses` (`id_class`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5550 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5549 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
