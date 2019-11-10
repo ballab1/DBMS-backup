@@ -251,7 +251,7 @@ CREATE TABLE `pma__recent` (
 
 LOCK TABLES `pma__recent` WRITE;
 /*!40000 ALTER TABLE `pma__recent` DISABLE KEYS */;
-INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"nconf\",\"table\":\"History\"},{\"db\":\"grafana\",\"table\":\"annotation_tag\"},{\"db\":\"grafana\",\"table\":\"org\"},{\"db\":\"grafana\",\"table\":\"org_user\"},{\"db\":\"grafana\",\"table\":\"user\"},{\"db\":\"grafana\",\"table\":\"temp_user\"}]');
+INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"zen\",\"table\":\"zen_options\"},{\"db\":\"zen\",\"table\":\"zen_administrators\"},{\"db\":\"nconf\",\"table\":\"History\"},{\"db\":\"grafana\",\"table\":\"annotation_tag\"},{\"db\":\"grafana\",\"table\":\"org\"},{\"db\":\"grafana\",\"table\":\"org_user\"},{\"db\":\"grafana\",\"table\":\"user\"},{\"db\":\"grafana\",\"table\":\"temp_user\"}]');
 /*!40000 ALTER TABLE `pma__recent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,7 +438,7 @@ CREATE TABLE `pma__userconfig` (
 
 LOCK TABLES `pma__userconfig` WRITE;
 /*!40000 ALTER TABLE `pma__userconfig` DISABLE KEYS */;
-INSERT INTO `pma__userconfig` VALUES ('bobb','2019-09-27 01:54:49','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
+INSERT INTO `pma__userconfig` VALUES ('bobb','2019-11-10 00:07:16','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
 /*!40000 ALTER TABLE `pma__userconfig` ENABLE KEYS */;
 UNLOCK TABLES;
 
