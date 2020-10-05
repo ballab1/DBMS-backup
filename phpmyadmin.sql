@@ -439,7 +439,7 @@ CREATE TABLE `pma__userconfig` (
 
 LOCK TABLES `pma__userconfig` WRITE;
 /*!40000 ALTER TABLE `pma__userconfig` DISABLE KEYS */;
-INSERT INTO `pma__userconfig` VALUES ('bobb','2020-10-05 00:17:18','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"show\",\"Console\\/Height\":334.9864,\"NavigationWidth\":354}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
+INSERT INTO `pma__userconfig` VALUES ('bobb','2020-10-05 00:41:54','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"show\",\"Console\\/Height\":334.9864,\"NavigationWidth\":354}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
 /*!40000 ALTER TABLE `pma__userconfig` ENABLE KEYS */;
 UNLOCK TABLES;
 
