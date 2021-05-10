@@ -251,7 +251,7 @@ CREATE TABLE `pma__recent` (
 
 LOCK TABLES `pma__recent` WRITE;
 /*!40000 ALTER TABLE `pma__recent` DISABLE KEYS */;
-INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"grafana\",\"table\":\"dashboard\"},{\"db\":\"grafana\",\"table\":\"org\"},{\"db\":\"grafana\",\"table\":\"alert\"},{\"db\":\"grafana\",\"table\":\"data_source\"},{\"db\":\"grafana\",\"table\":\"dashboard_snapshot\"},{\"db\":\"nconf\",\"table\":\"ConfigAttrs\"},{\"db\":\"nconf\",\"table\":\"ConfigItems\"},{\"db\":\"nconf\",\"table\":\"ConfigClasses\"},{\"db\":\"nconf\",\"table\":\"ConfigValues\"},{\"db\":\"nconf\",\"table\":\"ItemLinks\"}]');
+INSERT INTO `pma__recent` VALUES ('bobb','[{\"db\":\"grafana\",\"table\":\"alert\"},{\"db\":\"grafana\",\"table\":\"dashboard\"},{\"db\":\"grafana\",\"table\":\"org\"},{\"db\":\"grafana\",\"table\":\"data_source\"},{\"db\":\"grafana\",\"table\":\"dashboard_snapshot\"},{\"db\":\"nconf\",\"table\":\"ConfigAttrs\"},{\"db\":\"nconf\",\"table\":\"ConfigItems\"},{\"db\":\"nconf\",\"table\":\"ConfigClasses\"},{\"db\":\"nconf\",\"table\":\"ConfigValues\"},{\"db\":\"nconf\",\"table\":\"ItemLinks\"}]');
 /*!40000 ALTER TABLE `pma__recent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +439,7 @@ CREATE TABLE `pma__userconfig` (
 
 LOCK TABLES `pma__userconfig` WRITE;
 /*!40000 ALTER TABLE `pma__userconfig` DISABLE KEYS */;
-INSERT INTO `pma__userconfig` VALUES ('bobb','2021-05-07 01:07:43','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"show\",\"Console\\/Height\":177.98599999999999,\"NavigationWidth\":354,\"ThemeDefault\":\"original\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
+INSERT INTO `pma__userconfig` VALUES ('bobb','2021-05-10 01:34:17','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"show\",\"Console\\/Height\":177.98599999999999,\"NavigationWidth\":354,\"ThemeDefault\":\"original\"}'),('root','2018-09-05 11:22:22','{\"collation_connection\":\"utf8mb4_unicode_ci\",\"Console\\/Mode\":\"collapse\"}');
 /*!40000 ALTER TABLE `pma__userconfig` ENABLE KEYS */;
 UNLOCK TABLES;
 
